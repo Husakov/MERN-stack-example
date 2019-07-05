@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
-import MovieRow from './MovieRow';
 
 export default class Favourites extends Component {
     movie = [];
@@ -15,27 +14,15 @@ export default class Favourites extends Component {
     componentDidMount(){
         axios.get('http://localhost:4000/movies')
             .then(response => {
-                console.log(response.data);
                 this.setState({ favourites: response.data });
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
-    tabRow(){
-        //return this.state.business.map(function(object, i){
-        //   return <TableRow obj={object} key={i} />;
-        //});
-    }
-    movieRow(){
-        // return movieService.getMovies(1).then(result=> {
-        //  console.log(result);
-        //    return <div>samir</div>
 
-        // });
-        console.log(this.movie);
+    movieRow(){
         return this.state.favourites.map((object, i) => {
-            console.log(object);
             return <TableRow obj={object} key={i} />;
         });
     }

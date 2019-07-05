@@ -5,10 +5,12 @@ const PORT = 4000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB.js');
-const businessRoute = require('./business.route');
-const moviesRoute = require('./movies.route');
-//const passport = require("./passport");
-//const users = require("./users");
+
+const moviesRoute = require('./routes/movies.route');
+
+//const passport = require("passport");
+
+//const users = require("./routes/users");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -16,18 +18,22 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
     err => { console.log('Can not connect to the database'+ err)}
 );
 
-// Passport middleware
-//app.use(passport.initialize());
-// Passport config
-//require("passport")(passport);
-// Routes
-//app.use("/api/users", users);
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/business', businessRoute);
+// Passport middleware
+//app.use(passport.initialize());
+
+// Passport config
+//require("./config/passport")(passport);
+
+// Routes
+//app.use("/api/users", users);
+
+
 app.use('/movies', moviesRoute);
 
 app.listen(PORT, function(){

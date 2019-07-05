@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Define collection and schema for Business
-let User = new Schema({
+// Create Schema
+const UserSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -19,8 +19,6 @@ let User = new Schema({
         type: Date,
         default: Date.now
     }
-},{
-    collection: 'movies'
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = User = mongoose.model("users", UserSchema);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import TableRow from './TableRow';
 import MovieRow from './MovieRow';
 import * as movieService from './../services/topMovie.service';
 
